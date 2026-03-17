@@ -117,7 +117,7 @@ const Hero = () => {
           className="grid grid-cols-2 gap-3"
         >
           <a href="#work" className="bg-white text-black py-4 rounded-2xl text-xs font-black uppercase tracking-widest text-center shadow-lg">Work</a>
-          <a href="/Harsh_Singh_Resume.pdf" target="_blank" className="border border-white/10 bg-white/5 text-white py-4 rounded-2xl text-xs font-black uppercase tracking-widest text-center backdrop-blur-md">CV</a>
+          <a href="/HarshSinghCV.pdf" target="_blank" className="border border-white/10 bg-white/5 text-white py-4 rounded-2xl text-xs font-black uppercase tracking-widest text-center backdrop-blur-md">CV</a>
         </motion.div>
       </div>
 
@@ -206,7 +206,7 @@ const Hero = () => {
 
             <Magnetic>
               <a 
-                href="/Harsh_Singh_Resume.pdf" 
+                href="/HarshSinghCV.pdf" 
                 target="_blank" 
                 className="group relative flex items-center justify-center w-24 h-24 rounded-full border border-white/20 text-white overflow-hidden hover:border-white transition-all active:scale-95"
               >

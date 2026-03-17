@@ -63,7 +63,7 @@ const Navbar = () => {
             <Magnetic><NavLink href="#contact" label="Contact" /></Magnetic>
             <Magnetic>
                 <a
-                  href="/Harsh_Singh_Resume.pdf"
+                  href="/HarshSinghCV.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative h-10 pl-6 pr-5 flex items-center overflow-hidden bg-white/5 border border-white/10 rounded-full ml-2"
@@ -117,7 +117,7 @@ const Navbar = () => {
               </motion.a>
             ))}
             <motion.a
-              href="/Harsh_Singh_Resume.pdf"
+              href="/HarshSinghCV.pdf"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
