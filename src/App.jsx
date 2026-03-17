@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Services from './components/Services';
-import Education from './components/Education';
-import Certifications from './components/Certifications';
-import Recognitions from './components/Recognitions';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
 import Loader from './components/Loader';
+import CustomCursor from './components/CustomCursor';
 
+// Lazy load components below the fold
+const About = lazy(() => import('./components/About'));
+const Projects = lazy(() => import('./components/Projects'));
+const Services = lazy(() => import('./components/Services'));
+const Education = lazy(() => import('./components/Education'));
+const Certifications = lazy(() => import('./components/Certifications'));
+const Recognitions = lazy(() => import('./components/Recognitions'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 
 function App() {
   const { scrollYProgress } = useScroll();
@@ -34,7 +35,6 @@ function App() {
   }, [isLoading]);
 
   return (
-
     <div className="bg-[#050505] min-h-screen selection:bg-white/10 selection:text-white relative">
       <AnimatePresence mode="wait">
         {isLoading && <Loader onComplete={() => setIsLoading(false)} />}
@@ -61,17 +61,19 @@ function App() {
       >
         <Navbar />
         <Hero />
-        <About />
-        <Services />
-        <Projects />
-        <Certifications />
-        <Recognitions />
-        <Education />
-        <Contact />
-        <Footer />
+        
+        <Suspense fallback={<div className="h-screen bg-[#050505]" />}>
+          <About />
+          <Services />
+          <Projects />
+          <Certifications />
+          <Recognitions />
+          <Education />
+          <Contact />
+          <Footer />
+        </Suspense>
       </motion.main>
     </div>
-
   );
 }
 

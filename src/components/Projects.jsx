@@ -74,7 +74,7 @@ const ProjectCard = ({ project, index }) => {
       ref={cardRef}
       initial={{ opacity: 0, y: 80 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, margin: '-60px' }}
+      viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.85, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
       whileHover="hovered"
       className="group relative rounded-[32px] overflow-hidden border border-white/8 bg-white/[0.03] backdrop-blur-sm shadow-[0_8px_60px_rgba(0,0,0,0.5)] hover:border-white/20 transition-colors duration-500"

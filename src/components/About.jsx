@@ -33,7 +33,7 @@ const About = () => {
           <motion.div
             initial={{ opacity: 0, x: -60, rotate: -4 }}
             whileInView={{ opacity: 1, x: 0, rotate: -2 }}
-            viewport={{ once: false, margin: "-100px" }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ rotate: 0, scale: 1.03 }}
             className="relative flex-shrink-0 w-[240px] h-[280px] md:w-[300px] md:h-[360px] lg:w-[340px] lg:h-[400px] cursor-pointer"
@@ -59,7 +59,7 @@ const About = () => {
                   key={i}
                   initial={{ opacity: 0.12, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, margin: "-100px" }}
+                  viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.35, delay: i * 0.035 }}
                   className="inline-block will-change-transform"
                 >

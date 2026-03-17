@@ -41,11 +41,11 @@ const CustomCursor = () => {
         }}
         animate={{
           scale: isHovering ? 2.5 : 1,
-          backgroundColor: isHovering ? "rgba(255, 255, 255, 0.15)" : "rgba(255, 255, 255, 1)",
-          backdropFilter: isHovering ? "blur(4px)" : "blur(0px)",
-          border: isHovering ? "1px solid rgba(255,255,255,0.2)" : "0px solid transparent"
         }}
-        className="fixed w-4 h-4 -ml-2 -mt-2 rounded-full mix-blend-difference"
+        transition={{ type: "spring", stiffness: 250, damping: 20 }}
+        className={`fixed w-4 h-4 -ml-2 -mt-2 rounded-full mix-blend-difference transition-colors duration-300 ${
+          isHovering ? "bg-white/10 border border-white/20" : "bg-white"
+        }`}
       />
     </div>
   );

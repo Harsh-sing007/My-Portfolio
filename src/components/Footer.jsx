@@ -20,7 +20,7 @@ const Footer = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="text-5xl md:text-6xl mb-4"
             >
@@ -29,7 +29,7 @@ const Footer = () => {
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="font-display text-[clamp(2.5rem,7vw,6.5rem)] leading-[0.92] tracking-tighter uppercase text-white font-black"
             >
@@ -38,7 +38,7 @@ const Footer = () => {
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.3 }}
               className="text-white/40 text-lg md:text-xl font-medium tracking-wide max-w-2xl mx-auto"
             >
@@ -50,7 +50,7 @@ const Footer = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-wrap items-center justify-center gap-4"
           >

@@ -167,23 +167,13 @@ const Services = () => {
                     className="relative group/tech flex flex-col items-center"
                   >
                     {/* Floating Icon Container */}
-                    <motion.div
-                      animate={{ y: [0, -8, 0] }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatType: 'reverse',
-                        delay: Math.random() * 2,
-                        ease: "easeInOut"
-                      }}
-                      className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-[#0f0f0f]/80 border border-white/5 shadow-inner flex items-center justify-center p-3 sm:p-4 mb-3 transition-colors duration-300 group-hover/tech:bg-white/10 group-hover/tech:border-white/20"
-                    >
+                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-[#0f0f0f]/80 border border-white/5 shadow-inner flex items-center justify-center p-3 sm:p-4 mb-3 transition-all duration-300 group-hover/tech:bg-white/10 group-hover/tech:border-white/20 group-hover/tech:scale-110 group-hover/tech:-translate-y-1">
                       <img 
                         src={tech.icon} 
                         alt={tech.name} 
-                        className="w-full h-full object-contain filter drop-shadow-lg transition-transform duration-500 group-hover/tech:scale-125"
+                        className="w-full h-full object-contain filter drop-shadow-lg transition-transform duration-500 group-hover/tech:scale-110"
                       />
-                    </motion.div>
+                    </div>
 
                     {/* Tech Name Label */}
                     <span className="text-[10px] md:text-xs font-sans font-medium text-white/60 tracking-wider uppercase text-center transition-colors duration-300 group-hover/tech:text-white">
