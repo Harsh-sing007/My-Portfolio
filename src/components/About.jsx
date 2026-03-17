@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { User } from 'lucide-react';
-import heroPic from '../assets/hero.jpeg';
+import heroPic from '../assets/hero.webp';
 
 const About = () => {
   const words = "I am a Cloud Computing student passionate about DevOps, automation, and scalable cloud infrastructure. I enjoy learning how modern applications are deployed and managed using cloud platforms, containerization, and CI/CD pipelines. Beyond technical implementation, I value problem-solving, clean architecture, and continuous improvement. I actively build projects to deepen my understanding of cloud systems and automation while preparing myself to contribute effectively in DevOps and cloud engineering environments.".split(" ");

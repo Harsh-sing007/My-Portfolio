@@ -2,9 +2,9 @@ import React from 'react'; // For potential future use if icons are needed in da
 
 // I will just use placeholder image imports or change the project imports
 // Wait, the template imports these images at the top. I'll just change the data but keep the format so the build doesn't break.
-import aidjImg from '../assets/projects/aidj.jpg';
-import ratinamazeImg from '../assets/projects/ratinamaze.jpg';
-import cicdImg from '../assets/projects/cicd.jpg';
+import aidjImg from '../assets/projects/aidj.webp';
+import ratinamazeImg from '../assets/projects/ratinamaze.webp';
+import cicdImg from '../assets/projects/cicd.webp';
 
 export const projects = [
   {
