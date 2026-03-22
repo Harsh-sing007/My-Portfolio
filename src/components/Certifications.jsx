@@ -9,7 +9,7 @@ const certifications = [
     issuer: "Google Cloud",
     date: "Aug 2024",
     description: "Certification in Google Cloud's Generative AI course. Gained understanding of Generative AI, Large Language Models (LLMs), and how to leverage Google Cloud tools like Vertex AI for AI development.",
-    logo: "https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png",
+    logo: "/src/assets/certifications/logos/logo1.webp",
     certImage: "/src/assets/certifications/cert1.webp", 
     color: "from-blue-600/20 to-blue-400/10",
     border: "border-blue-500/20",
@@ -22,7 +22,7 @@ const certifications = [
     issuer: "Deloitte / Forage",
     date: "July 2025",
     description: "Successfully completed a job simulation involving real-world tasks such as software engineering, problem solving, and professional communication in a corporate technology environment.",
-    logo: "https://images.squarespace-cdn.com/content/v1/5f1fe9f4931a31704207908b/1598460670390-58R39V74RK9E7N7H07T4/Forage+Logo+Blue.png",
+    logo: "/src/assets/certifications/logos/logo2.webp",
     certImage: "/src/assets/certifications/cert2.webp",
     color: "from-purple-600/20 to-pink-400/10",
     border: "border-purple-500/20",
@@ -35,7 +35,7 @@ const certifications = [
     issuer: "NPTEL / IIT Kharagpur",
     date: "Nov 2024",
     description: "Academic certification in Internet of Things from NPTEL. Learned about IoT system architecture, networking protocols, sensors, and cloud integration for smart applications.",
-    logo: "https://mhrd.gov.in/sites/default/files/nptel_logo.png",
+    logo: "/src/assets/certifications/logos/logo3.webp",
     certImage: "/src/assets/certifications/cert3.webp",
     color: "from-orange-600/20 to-amber-400/10",
     border: "border-orange-500/20",
@@ -48,7 +48,7 @@ const certifications = [
     issuer: "freeCodeCamp",
     date: "Dec 2024",
     description: "Completed the freeCodeCamp certification for Responsive Web Design. Gained proficiency in modern CSS (Flexbox, Grid), accessible design, and semantic HTML for a mobile-first web.",
-    logo: "https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg",
+    logo: "/src/assets/certifications/logos/logo4.webp",
     certImage: "/src/assets/certifications/cert4.webp",
     color: "from-emerald-600/20 to-green-400/10",
     border: "border-emerald-500/20",
@@ -61,7 +61,7 @@ const certifications = [
     issuer: "Amazon Web Services",
     date: "Jan 2025",
     description: "Specialized AWS training on core DevOps principles. Focused on building CI/CD pipelines, automating infrastructure with AWS services, and maintaining cloud reliability.",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    logo: "/src/assets/certifications/logos/logo5.webp",
     certImage: "/src/assets/certifications/cert5.webp",
     color: "from-amber-600/20 to-yellow-400/10",
     border: "border-amber-500/20",
@@ -74,7 +74,7 @@ const certifications = [
     issuer: "Board Infinity",
     date: "Jul 2025",
     description: "Summer Training focused on problem-solving patterns: Sliding Window, Two Pointers, Binary Search, Recursion, Dynamic Programming, and Graph algorithms. Strengthened algorithmic efficiency through rigorous coding challenges.",
-    logo: "https://www.boardinfinity.com/assets/img/bi-logo.png",
+    logo: "/src/assets/certifications/logos/logo6.webp",
     certImage: "/src/assets/certifications/cert6.webp",
     color: "from-red-600/20 to-orange-400/10",
     border: "border-red-500/20",
@@ -112,11 +112,11 @@ const TiltCard = ({ cert, index }) => {
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="group relative flex flex-col rounded-[32px] overflow-hidden border border-white/10 bg-[#0d0d0d] transition-all duration-500 hover:border-white/20 active:scale-[0.98]"
+      className="group relative flex flex-col rounded-[32px] overflow-hidden border border-white/10 bg-[#0d0d0d] transition-all duration-500 hover:border-white/20 active:scale-[0.98] cursor-pointer"
     >
       {/* Dynamic Glow Effect */}
       <div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
         style={{ 
           background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${cert.glow} 0%, transparent 70%)` 
         }}
@@ -129,7 +129,6 @@ const TiltCard = ({ cert, index }) => {
             src={cert.certImage} 
             alt={cert.title}
             className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
-            variants={{ hovered: { scale: 1.1 } }}
           />
         ) : (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-white/5 to-white/[0.02] p-8">
@@ -142,58 +141,72 @@ const TiltCard = ({ cert, index }) => {
 
         {/* Floating Badge */}
         <div className="absolute top-4 right-4 z-20" style={{ transform: "translateZ(30px)" }}>
-          <span className="text-[10px] font-bold text-white tracking-widest uppercase py-1 px-3 border border-white/10 rounded-full bg-black/60 backdrop-blur-md shadow-lg">
+          <span className="text-[10px] font-bold text-white tracking-widest uppercase py-1 px-4 border border-white/10 rounded-full bg-black/60 backdrop-blur-md shadow-lg">
             {cert.date}
           </span>
         </div>
 
         {/* Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent opacity-90" />
-        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent mix-blend-overlay group-hover:opacity-50 transition-opacity" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent opacity-95 z-10" />
       </div>
 
       {/* Content Container */}
-      <div className="relative p-8 pt-0 flex-1 flex flex-col justify-between" style={{ transform: "translateZ(10px)" }}>
+      <div className="relative p-8 pt-0 flex-1 flex flex-col justify-between z-20" style={{ transform: "translateZ(15px)" }}>
         <div>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center p-1.5 group-hover:bg-white/10 transition-colors">
+          <div className="flex items-center gap-4 mb-5">
+            {/* Optimized Logo Container with Shine */}
+            <div className="relative w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center p-2.5 group-hover:bg-white/10 transition-all duration-500 overflow-hidden shadow-2xl">
               <img src={cert.logo} alt={cert.issuer} className="w-full h-full object-contain brightness-110" />
+              {/* Shine Overlay */}
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full"
+                animate={{ transition: { duration: 2, repeat: Infinity, ease: "linear" }}}
+                whileHover={{ x: "200%", transition: { duration: 0.8 }}}
+              />
             </div>
-            <p className="text-[10px] font-bold tracking-[0.25em] text-white/40 uppercase group-hover:text-blue-400/80 transition-colors uppercase">{cert.issuer}</p>
+            <p className="text-[10px] font-bold tracking-[0.3em] text-white/30 uppercase group-hover:text-blue-400 transition-colors uppercase italic">{cert.issuer}</p>
           </div>
           
           <h3 className="text-xl md:text-2xl font-display font-bold text-white leading-tight mb-4 group-hover:text-blue-400 transition-colors tracking-tight">
             {cert.title}
           </h3>
           
-          <p className="text-white/40 text-xs md:text-[13px] leading-relaxed line-clamp-2 md:line-clamp-3 group-hover:text-white/60 transition-colors">
+          <p className="text-white/40 text-[13px] leading-relaxed line-clamp-2 md:line-clamp-3 group-hover:text-white/60 transition-colors">
             {cert.description}
           </p>
         </div>
 
-        <div className="mt-8 flex gap-3 overflow-hidden">
+        <div className="mt-8 flex gap-3">
           <a 
             href={cert.viewUrl} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group/btn flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl bg-white text-black text-xs font-bold hover:bg-white/90 transition-all duration-300 shadow-xl shadow-black/40 relative overflow-hidden"
+            className="group/btn flex-1 flex items-center justify-center gap-3 py-4 rounded-2xl bg-white text-black text-xs font-bold hover:bg-white/90 transition-all duration-300 shadow-xl shadow-black/40 relative overflow-hidden"
           >
             <span className="relative z-10 flex items-center gap-2">
               Verify Credentials
               <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
             </span>
-            {/* Gloss shine */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
+            {/* Animated Gloss shine */}
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full"
+              initial={{ x: "-100%" }}
+              whileHover={{ x: "100%" }}
+              transition={{ duration: 0.6 }}
+            />
           </a>
         </div>
       </div>
 
-      {/* Modern Sparkle indicator on top left if it has an image */}
+      {/* Sparkle indicator */}
       {cert.certImage && (
         <div className="absolute top-4 left-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <Sparkles className="w-4 h-4 text-blue-400/60 animate-pulse" />
+          <Sparkles className="w-4 h-4 text-blue-400 animate-pulse" />
         </div>
       )}
+
+      {/* Shine border */}
+      <div className="absolute inset-0 border border-white/0 group-hover:border-white/10 rounded-[32px] transition-colors pointer-events-none" />
     </motion.div>
   );
 };
@@ -201,22 +214,14 @@ const TiltCard = ({ cert, index }) => {
 const Certifications = () => {
   return (
     <section id="certifications" className="relative w-full bg-[#080808] py-32 overflow-hidden border-t border-white/5">
-      {/* Background decoration with animated bloom */}
+      {/* Atmospheric ambient glow */}
       <motion.div 
         animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.03, 0.05, 0.03]
+          scale: [1, 1.1, 1],
+          opacity: [0.03, 0.06, 0.03]
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-blue-600/10 blur-[150px] rounded-full pointer-events-none" 
-      />
-      <motion.div 
-        animate={{ 
-          scale: [1.2, 1, 1.2],
-          opacity: [0.03, 0.05, 0.03]
-        }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-purple-600/10 blur-[150px] rounded-full pointer-events-none" 
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-0 -left-1/4 w-full h-full bg-blue-600/5 blur-[180px] rounded-full pointer-events-none" 
       />
 
       <div className="container mx-auto px-6 md:px-16">
@@ -232,17 +237,17 @@ const Certifications = () => {
             whileInView={{ scale: 1, rotate: 0 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-2xl shadow-blue-500/20 backdrop-blur-xl"
+            className="w-16 h-16 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 shadow-2xl shadow-blue-500/10 backdrop-blur-2xl"
           >
-            <Award className="w-7 h-7 text-white" />
+            <Award className="w-8 h-8 text-white" />
           </motion.div>
-          <p className="text-[12px] font-bold tracking-[0.4em] text-white/30 uppercase mb-4">Credentials & Accreditation</p>
-          <h2 className="font-display text-[clamp(3.5rem,8vw,6.5rem)] leading-[0.9] tracking-tighter uppercase text-white">
-            Official <br className="md:hidden" /> <span className="text-white/40">Certifications</span>
+          <p className="text-[13px] font-bold tracking-[0.5em] text-white/20 uppercase mb-5 italic">Authenticated Badges</p>
+          <h2 className="font-display text-[clamp(4rem,9vw,7.5rem)] leading-[0.85] tracking-tighter uppercase text-white">
+            Official <br /> <span className="text-white/30">Accolades</span>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {certifications.map((cert, index) => (
             <TiltCard key={cert.id} cert={cert} index={index} />
           ))}
