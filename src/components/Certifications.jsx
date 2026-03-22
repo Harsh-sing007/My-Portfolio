@@ -2,6 +2,21 @@ import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Award, ExternalLink, Sparkles } from 'lucide-react';
 
+// Import certification images and logos
+import cert1 from '../assets/certifications/cert1.webp';
+import cert2 from '../assets/certifications/cert2.webp';
+import cert3 from '../assets/certifications/cert3.webp';
+import cert4 from '../assets/certifications/cert4.webp';
+import cert5 from '../assets/certifications/cert5.webp';
+import cert6 from '../assets/certifications/cert6.webp';
+
+import logo1 from '../assets/certifications/logos/logo1.webp';
+import logo2 from '../assets/certifications/logos/logo2.webp';
+import logo3 from '../assets/certifications/logos/logo3.webp';
+import logo4 from '../assets/certifications/logos/logo4.webp';
+import logo5 from '../assets/certifications/logos/logo5.webp';
+import logo6 from '../assets/certifications/logos/logo6.webp';
+
 const certifications = [
   {
     id: 1,
@@ -9,8 +24,8 @@ const certifications = [
     issuer: "Google Cloud",
     date: "Aug 2024",
     description: "Certification in Google Cloud's Generative AI course. Gained understanding of Generative AI, Large Language Models (LLMs), and how to leverage Google Cloud tools like Vertex AI for AI development.",
-    logo: "/src/assets/certifications/logos/logo1.webp",
-    certImage: "/src/assets/certifications/cert1.webp", 
+    logo: logo1,
+    certImage: cert1, 
     color: "from-blue-600/20 to-blue-400/10",
     border: "border-blue-500/20",
     glow: "rgba(59, 130, 246, 0.3)",
@@ -22,8 +37,8 @@ const certifications = [
     issuer: "Deloitte / Forage",
     date: "July 2025",
     description: "Successfully completed a job simulation involving real-world tasks such as software engineering, problem solving, and professional communication in a corporate technology environment.",
-    logo: "/src/assets/certifications/logos/logo2.webp",
-    certImage: "/src/assets/certifications/cert2.webp",
+    logo: logo2,
+    certImage: cert2,
     color: "from-purple-600/20 to-pink-400/10",
     border: "border-purple-500/20",
     glow: "rgba(168, 85, 247, 0.3)",
@@ -35,8 +50,8 @@ const certifications = [
     issuer: "NPTEL / IIT Kharagpur",
     date: "Nov 2024",
     description: "Academic certification in Internet of Things from NPTEL. Learned about IoT system architecture, networking protocols, sensors, and cloud integration for smart applications.",
-    logo: "/src/assets/certifications/logos/logo3.webp",
-    certImage: "/src/assets/certifications/cert3.webp",
+    logo: logo3,
+    certImage: cert3,
     color: "from-orange-600/20 to-amber-400/10",
     border: "border-orange-500/20",
     glow: "rgba(249, 115, 22, 0.3)",
@@ -48,8 +63,8 @@ const certifications = [
     issuer: "freeCodeCamp",
     date: "Dec 2024",
     description: "Completed the freeCodeCamp certification for Responsive Web Design. Gained proficiency in modern CSS (Flexbox, Grid), accessible design, and semantic HTML for a mobile-first web.",
-    logo: "/src/assets/certifications/logos/logo4.webp",
-    certImage: "/src/assets/certifications/cert4.webp",
+    logo: logo4,
+    certImage: cert4,
     color: "from-emerald-600/20 to-green-400/10",
     border: "border-emerald-500/20",
     glow: "rgba(16, 185, 129, 0.3)",
@@ -61,8 +76,8 @@ const certifications = [
     issuer: "Amazon Web Services",
     date: "Jan 2025",
     description: "Specialized AWS training on core DevOps principles. Focused on building CI/CD pipelines, automating infrastructure with AWS services, and maintaining cloud reliability.",
-    logo: "/src/assets/certifications/logos/logo5.webp",
-    certImage: "/src/assets/certifications/cert5.webp",
+    logo: logo5,
+    certImage: cert5,
     color: "from-amber-600/20 to-yellow-400/10",
     border: "border-amber-500/20",
     glow: "rgba(245, 158, 11, 0.3)",
@@ -74,8 +89,8 @@ const certifications = [
     issuer: "Board Infinity",
     date: "Jul 2025",
     description: "Summer Training focused on problem-solving patterns: Sliding Window, Two Pointers, Binary Search, Recursion, Dynamic Programming, and Graph algorithms. Strengthened algorithmic efficiency through rigorous coding challenges.",
-    logo: "/src/assets/certifications/logos/logo6.webp",
-    certImage: "/src/assets/certifications/cert6.webp",
+    logo: logo6,
+    certImage: cert6,
     color: "from-red-600/20 to-orange-400/10",
     border: "border-red-500/20",
     glow: "rgba(239, 68, 68, 0.3)",
@@ -114,20 +129,19 @@ const TiltCard = ({ cert, index }) => {
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       className="group relative flex flex-col rounded-[32px] overflow-hidden border border-white/10 bg-[#0d0d0d] transition-all duration-500 hover:border-white/20 active:scale-[0.98] cursor-pointer"
     >
-      {/* Dynamic Glow Effect */}
       <div 
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
         style={{ 
-          background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${cert.glow} 0%, transparent 70%)` 
+          background: `radial-gradient(circle at 50% 50%, ${cert.glow} 0%, transparent 70%)` 
         }}
       />
 
-      {/* Image Container */}
       <div className="relative aspect-[16/10] overflow-hidden bg-black/40" style={{ transform: "translateZ(20px)" }}>
         {cert.certImage ? (
           <motion.img 
             src={cert.certImage} 
             alt={cert.title}
+            loading="lazy"
             className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
           />
         ) : (
@@ -139,32 +153,27 @@ const TiltCard = ({ cert, index }) => {
           </div>
         )}
 
-        {/* Floating Badge */}
         <div className="absolute top-4 right-4 z-20" style={{ transform: "translateZ(30px)" }}>
           <span className="text-[10px] font-bold text-white tracking-widest uppercase py-1 px-4 border border-white/10 rounded-full bg-black/60 backdrop-blur-md shadow-lg">
             {cert.date}
           </span>
         </div>
 
-        {/* Gradient Overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent opacity-95 z-10" />
       </div>
 
-      {/* Content Container */}
       <div className="relative p-8 pt-0 flex-1 flex flex-col justify-between z-20" style={{ transform: "translateZ(15px)" }}>
         <div>
           <div className="flex items-center gap-4 mb-5">
-            {/* Optimized Logo Container with Shine */}
             <div className="relative w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center p-2.5 group-hover:bg-white/10 transition-all duration-500 overflow-hidden shadow-2xl">
               <img src={cert.logo} alt={cert.issuer} className="w-full h-full object-contain brightness-110" />
-              {/* Shine Overlay */}
               <motion.div 
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full"
                 animate={{ transition: { duration: 2, repeat: Infinity, ease: "linear" }}}
                 whileHover={{ x: "200%", transition: { duration: 0.8 }}}
               />
             </div>
-            <p className="text-[10px] font-bold tracking-[0.3em] text-white/30 uppercase group-hover:text-blue-400 transition-colors uppercase italic">{cert.issuer}</p>
+            <p className="text-[10px] font-bold tracking-[0.3em] text-white/30 uppercase group-hover:text-blue-400 transition-colors italic">{cert.issuer}</p>
           </div>
           
           <h3 className="text-xl md:text-2xl font-display font-bold text-white leading-tight mb-4 group-hover:text-blue-400 transition-colors tracking-tight">
@@ -187,7 +196,6 @@ const TiltCard = ({ cert, index }) => {
               Verify Credentials
               <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
             </span>
-            {/* Animated Gloss shine */}
             <motion.div 
               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full"
               initial={{ x: "-100%" }}
@@ -198,14 +206,12 @@ const TiltCard = ({ cert, index }) => {
         </div>
       </div>
 
-      {/* Sparkle indicator */}
       {cert.certImage && (
         <div className="absolute top-4 left-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <Sparkles className="w-4 h-4 text-blue-400 animate-pulse" />
         </div>
       )}
 
-      {/* Shine border */}
       <div className="absolute inset-0 border border-white/0 group-hover:border-white/10 rounded-[32px] transition-colors pointer-events-none" />
     </motion.div>
   );
@@ -214,7 +220,6 @@ const TiltCard = ({ cert, index }) => {
 const Certifications = () => {
   return (
     <section id="certifications" className="relative w-full bg-[#080808] py-32 overflow-hidden border-t border-white/5">
-      {/* Atmospheric ambient glow */}
       <motion.div 
         animate={{ 
           scale: [1, 1.1, 1],

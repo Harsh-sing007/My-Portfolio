@@ -10,7 +10,7 @@ const Loader = ({ onComplete }) => {
   useEffect(() => {
     // Progress Animation
     let start = null;
-    const duration = 2500; // Slower, more premium feel
+    const duration = 1500; // Faster for better production perception
 
     const step = (timestamp) => {
       if (!start) start = timestamp;
