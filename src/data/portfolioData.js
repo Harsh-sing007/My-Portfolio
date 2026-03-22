@@ -5,6 +5,9 @@ import React from 'react'; // For potential future use if icons are needed in da
 import aidjImg from '../assets/projects/aidj.webp';
 import ratinamazeImg from '../assets/projects/ratinamaze.webp';
 import cicdImg from '../assets/projects/cicd.webp';
+import bethanyLogo from '../assets/schools/bethany.webp';
+import dpsLogo from '../assets/schools/dps.webp';
+import lpuLogo from '../assets/schools/lpu.webp';
 
 export const projects = [
   {
@@ -107,18 +110,21 @@ export const education = [
     year: "Aug' 23 - Present",
     title: "Lovely Professional University",
     subtitle: "Bachelor of Technology - Computer Science and Engineering",
-    grade: "CGPA: 7.28"
+    grade: "CGPA: 7.28",
+    logo: lpuLogo
   },
   {
     year: "Apr' 21 - Mar' 23",
     title: "Delhi Public School",
     subtitle: "Intermediate",
-    grade: "Percentage: 81%"
+    grade: "Percentage: 81%",
+    logo: dpsLogo
   },
   {
     year: "Mar' 20 - Mar' 21",
     title: "Bethany Convent School",
     subtitle: "Matriculation",
-    grade: "Percentage: 84%"
+    grade: "Percentage: 84%",
+    logo: bethanyLogo
   }
 ];
