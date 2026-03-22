@@ -1,31 +1,21 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+// Optimized Vite config for Render/Production
 export default defineConfig({
   plugins: [react()],
-  server: {
-    port: 5173,
-    host: true
-  },
   build: {
     outDir: 'dist',
-    sourcemap: false,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    },
+    minify: 'esbuild',
+    chunkSizeWarningLimit: 1200,
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor': ['react', 'react-dom', 'framer-motion', 'lucide-react'],
-          'ui': ['./src/components/About.jsx', './src/components/Services.jsx']
+          'react-vendor': ['react', 'react-dom'],
+          'animation-vendor': ['framer-motion'],
+          'icons': ['lucide-react']
         }
       }
-    },
-    chunkSizeWarningLimit: 1000
+    }
   }
 })
