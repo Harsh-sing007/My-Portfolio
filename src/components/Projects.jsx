@@ -21,7 +21,7 @@ const Projects = () => {
         <motion.div 
           initial={{ scale: 0, rotate: -20 }}
           whileInView={{ scale: 1, rotate: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
           className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-xl shadow-black/20"
         >
@@ -30,7 +30,7 @@ const Projects = () => {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-[11px] font-semibold tracking-[0.3em] text-white/30 uppercase mb-4"
         >
@@ -39,7 +39,7 @@ const Projects = () => {
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
           className="font-display text-[clamp(3rem,7vw,6.5rem)] leading-[0.92] tracking-tighter uppercase text-white"
         >
