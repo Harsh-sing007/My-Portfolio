@@ -51,23 +51,37 @@ const About = () => {
             />
           </motion.div>
 
-          {/* Bio text – right side */}
-          <div className="flex flex-col gap-0 items-start justify-center">
+          {/* Bio text – right side (Optimized to single observer with stagger) */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.03,
+                }
+              }
+            }}
+            className="flex flex-col gap-0 items-start justify-center"
+          >
             <p className="text-white font-sans text-[20px] md:text-[26px] lg:text-[28px] leading-[1.45] font-normal tracking-tight flex flex-wrap gap-x-[0.3em]">
               {words.map((word, i) => (
                 <motion.span
                   key={i}
-                  initial={{ opacity: 0.12, y: 8 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.35, delay: i * 0.035 }}
+                  variants={{
+                    hidden: { opacity: 0.12, y: 8 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
                   className="inline-block will-change-transform"
                 >
                   {word}
                 </motion.span>
               ))}
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

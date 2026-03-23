@@ -38,13 +38,15 @@ const CustomCursor = () => {
         style={{
           left: mouse.x,
           top: mouse.y,
+          transform: "translateZ(0)",
+          willChange: "left, top, transform, scale"
         }}
         animate={{
           scale: isHovering ? 2.5 : 1,
         }}
         transition={{ type: "spring", stiffness: 250, damping: 20 }}
-        className={`fixed w-4 h-4 -ml-2 -mt-2 rounded-full mix-blend-difference transition-colors duration-300 ${
-          isHovering ? "bg-white/10 border border-white/20" : "bg-white"
+        className={`fixed w-4 h-4 -ml-2 -mt-2 rounded-full border transition-colors duration-300 ${
+          isHovering ? "bg-white/10 border-white/20 scale-110" : "bg-white border-transparent"
         }`}
       />
     </div>

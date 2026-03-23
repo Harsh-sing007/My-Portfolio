@@ -48,9 +48,6 @@ function App() {
         style={{ scaleX }}
       />
 
-      {/* Global Noise Overlay */}
-      <div className="fixed inset-0 pointer-events-none z-[998] opacity-[0.03] mix-blend-overlay noise" />
-
       {/* Main Content Rendered Immediately */}
       <motion.main 
         id="main" 
@@ -62,14 +59,36 @@ function App() {
         <Navbar />
         <Hero />
         
-        <Suspense fallback={<div className="h-screen bg-[#050505]" />}>
+        {/* Progressive Loading with Individual Suspense Boundaries for better performance */}
+        <Suspense fallback={<div className="h-96 bg-[#050505]" />}>
           <About />
+        </Suspense>
+        
+        <Suspense fallback={<div className="h-96 bg-[#050505]" />}>
           <Services />
+        </Suspense>
+
+        <Suspense fallback={<div className="h-[600px] bg-[#050505]" />}>
           <Projects />
+        </Suspense>
+
+        <Suspense fallback={<div className="h-96 bg-[#050505]" />}>
           <Certifications />
+        </Suspense>
+
+        <Suspense fallback={<div className="h-96 bg-[#050505]" />}>
           <Recognitions />
+        </Suspense>
+
+        <Suspense fallback={<div className="h-96 bg-[#050505]" />}>
           <Education />
+        </Suspense>
+
+        <Suspense fallback={<div className="h-96 bg-[#050505]" />}>
           <Contact />
+        </Suspense>
+
+        <Suspense fallback={<div className="h-64 bg-[#050505]" />}>
           <Footer />
         </Suspense>
       </motion.main>

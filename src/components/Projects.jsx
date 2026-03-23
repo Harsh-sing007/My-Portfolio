@@ -77,7 +77,7 @@ const ProjectCard = ({ project, index }) => {
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.85, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
       whileHover="hovered"
-      className="group relative rounded-[32px] overflow-hidden border border-white/8 bg-white/[0.03] backdrop-blur-sm shadow-[0_8px_60px_rgba(0,0,0,0.5)] hover:border-white/20 transition-colors duration-500"
+      className="group relative rounded-[32px] overflow-hidden border border-white/8 bg-white/[0.04] shadow-[0_8px_60px_rgba(0,0,0,0.5)] hover:border-white/20 transition-colors duration-500"
     >
       <div className="flex flex-col lg:flex-row min-h-[480px]">
 
@@ -86,8 +86,9 @@ const ProjectCard = ({ project, index }) => {
           <motion.img
             src={project.image}
             alt={project.title}
+            loading="lazy"
             className="w-full h-full object-cover object-center"
-            style={{ y: imgY }}
+            style={{ y: imgY, transform: "translateZ(0)" }}
             variants={{ hovered: { scale: 1.06 } }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
           />

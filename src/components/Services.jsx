@@ -144,22 +144,13 @@ const SkillCard = ({ category, index }) => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 + (i * 0.05) }}
             >
-              {/* Perpetual Motion Icon Container */}
+              {/* Perpetual Motion Icon Container (Static for Performance, Hover Scaled) */}
               <motion.div
-                animate={{ 
-                  y: [0, -6, 0],
-                  scale: [1, 1.05, 1],
-                  rotate: [0, (i % 2 === 0 ? 3 : -3), 0]
-                }}
-                transition={{ 
-                  duration: 5 + (i % 3), 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-                whileHover={{ y: -12, scale: 1.25, rotate: 0 }}
-                className="w-16 h-16 md:w-20 md:h-20 rounded-[28px] bg-white/[0.04] border border-white/5 p-4 flex items-center justify-center backdrop-blur-md shadow-2xl group-hover/tech:border-white/30 group-hover/tech:bg-white/10 transition-all duration-300"
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ y: -8, scale: 1.15, rotate: 0 }}
+                className="w-16 h-16 md:w-20 md:h-20 rounded-[24px] bg-white/[0.04] border border-white/5 p-4 flex items-center justify-center shadow-2xl group-hover/tech:border-white/30 group-hover/tech:bg-white/10 transition-all duration-300"
               >
-                <img src={tech.icon} alt={tech.name} className="w-full h-full object-contain filter drop-shadow-2xl brightness-125" />
+                <img src={tech.icon} alt={tech.name} loading="lazy" className="w-full h-full object-contain filter drop-shadow-2xl" />
               </motion.div>
               <span className="mt-5 text-[11px] font-extrabold tracking-[0.2em] uppercase text-white/20 group-hover/tech:text-cyan-400 group-hover/tech:scale-110 transition-all duration-300">
                 {tech.name}
@@ -224,16 +215,12 @@ const Services = () => {
         </div>
       </div>
 
-      {/* Floating Animated Orbs */}
-      <motion.div 
-        animate={{ x: [0, 100, 0], y: [0, 50, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 -left-1/4 w-[1000px] h-[1000px] bg-blue-600/[0.03] blur-[200px] rounded-full pointer-events-none" 
+      {/* Optimized Background Orbs (Static for better performance) */}
+      <div 
+        className="absolute top-0 -left-1/4 w-[800px] h-[800px] bg-blue-600/[0.02] blur-[180px] rounded-full pointer-events-none" 
       />
-      <motion.div 
-        animate={{ x: [0, -120, 0], y: [0, 80, 0] }}
-        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-0 -right-1/4 w-[900px] h-[900px] bg-purple-600/[0.03] blur-[180px] rounded-full pointer-events-none" 
+      <div 
+        className="absolute bottom-0 -right-1/4 w-[700px] h-[700px] bg-purple-600/[0.02] blur-[150px] rounded-full pointer-events-none" 
       />
     </section>
   );

@@ -21,23 +21,13 @@ const Hero = () => {
   return (
     <section ref={containerRef} id="hero" className="relative min-h-screen w-full overflow-hidden bg-[#050505]">
       
-      {/* ── Ambient Background Elements ── */}
-      <div className="absolute inset-0 z-0">
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.15, 0.1],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] bg-red-600/10 rounded-full blur-[120px]" 
+      {/* ── Ambient Background Elements (Optimized to static for performance) ── */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div 
+          className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] bg-red-600/5 rounded-full blur-[120px]" 
         />
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.3, 1],
-            opacity: [0.05, 0.1, 0.05],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute -bottom-[20%] -right-[10%] w-[70%] h-[70%] bg-blue-600/10 rounded-full blur-[150px]" 
+        <div 
+          className="absolute -bottom-[20%] -right-[10%] w-[70%] h-[70%] bg-blue-600/5 rounded-full blur-[150px]" 
         />
       </div>
 
