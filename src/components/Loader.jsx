@@ -1,28 +1,64 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Import critical images to preload during the sequence
+import heroPic from '../assets/hero.webp';
+import aidjImg from '../assets/projects/aidj.webp';
+import ratinamazeImg from '../assets/projects/ratinamaze.webp';
+import cicdImg from '../assets/projects/cicd.webp';
+
+const CRITICAL_ASSETS = [
+  heroPic,
+  aidjImg,
+  ratinamazeImg,
+  cicdImg,
+  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
+  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
+  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg'
+];
+
 const Loader = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   const [glitchText, setGlitchText] = useState("INIT_UPLINK");
+  const [assetsLoaded, setAssetsLoaded] = useState(false);
 
   useEffect(() => {
-    const duration = 2000;
-    const interval = 20;
+    let loadedCount = 0;
+    const totalAssets = CRITICAL_ASSETS.length;
+
+    // Real Asset Preloading
+    CRITICAL_ASSETS.forEach(src => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        loadedCount++;
+        const newProgress = (loadedCount / totalAssets) * 100;
+        // Only jump progress if it's ahead of the timer
+        setProgress(prev => Math.max(prev, newProgress));
+        if (loadedCount === totalAssets) setAssetsLoaded(true);
+      };
+    });
+
+    // Minimum visual timer for smooth perception
+    const duration = 2500;
+    const interval = 30;
     const step = 100 / (duration / interval);
 
     const timer = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) {
+        if (prev >= 100 && assetsLoaded) {
           clearInterval(timer);
           setTimeout(onComplete, 800);
           return 100;
         }
-        return prev + step;
+        if (prev >= 95 && !assetsLoaded) return 95; // Wait for assets at 95%
+        return Math.min(prev + step, 100);
       });
     }, interval);
 
     const glitchInterval = setInterval(() => {
-        const texts = ["CORE_BOOT", "DATA_SYNC", "AES_ENCRYPT", "GRID_LOAD", "UPLINK_STABLE", "AUTH_ADMIN"];
+        const texts = ["CORE_BOOT", "SYNC_ASSETS", "IMAGE_PRELOAD", "HTTP_HANDSHAKE", "UPLINK_STABLE", "AUTH_ADMIN"];
         setGlitchText(texts[Math.floor(Math.random() * texts.length)]);
     }, 150);
 
@@ -30,15 +66,14 @@ const Loader = ({ onComplete }) => {
       clearInterval(timer);
       clearInterval(glitchInterval);
     };
-  }, [onComplete]);
+  }, [onComplete, assetsLoaded]);
 
   return (
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ 
         opacity: 0,
-        scale: 1.1,
-        filter: "blur(20px)",
+        scale: 1.05,
         transition: { duration: 1, ease: [0.76, 0, 0.24, 1] }
       }}
       className="fixed inset-0 z-[99999] bg-[#050505] flex flex-col items-center justify-center overflow-hidden font-display uppercase"
@@ -52,21 +87,13 @@ const Loader = ({ onComplete }) => {
           }} />
       </div>
 
-      {/* Scanning Laser Line */}
-      <motion.div 
-        animate={{ top: ['-10%', '110%'] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-        className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-600/40 to-transparent z-10 blur-[1px]"
-      />
-
       <div className="relative z-10 flex flex-col items-center">
         
         {/* Central Core Uplink Ring */}
         <div className="relative w-48 h-48 mb-12">
-            {/* Outer Spinning Ring */}
             <motion.svg 
                 animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                 viewBox="0 0 100 100" 
                 className="w-full h-full"
             >
@@ -74,79 +101,52 @@ const Loader = ({ onComplete }) => {
                 <circle 
                     cx="50" cy="50" r="48" 
                     fill="none" stroke="#DC2626" strokeWidth="1" 
-                    strokeDasharray="20 180" 
+                    strokeDasharray="15 185" 
                     strokeLinecap="round"
                 />
             </motion.svg>
 
-            {/* Inner Ring */}
-            <motion.svg 
-                animate={{ rotate: -360 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                viewBox="0 0 100 100" 
-                className="absolute inset-4 w-[calc(100%-32px)] h-[calc(100%-32px)]"
-            >
-                <circle 
-                    cx="50" cy="50" r="48" 
-                    fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" 
-                    strokeDasharray="10 40" 
-                />
-            </motion.svg>
-
-            {/* Percentage Center */}
             <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <motion.span 
-                    animate={{ scale: [1, 1.05, 1], opacity: [1, 0.8, 1] }}
+                    animate={{ opacity: [1, 0.5, 1] }}
                     transition={{ duration: 0.1, repeat: Infinity }}
                     className="text-6xl font-black text-white tracking-tighter"
                 >
                     {Math.round(progress)}
                 </motion.span>
-                <span className="text-[10px] text-white/30 tracking-[0.5em] mt-2">SYNCING</span>
+                <span className="text-[10px] text-white/30 tracking-[0.5em] mt-2">STREAMING</span>
             </div>
         </div>
 
-        {/* Binary Footer Sequence */}
+        {/* Status Sequence */}
         <div className="flex flex-col items-center gap-4">
-            <div className="flex items-center gap-8">
-                <div className="h-[1px] w-20 bg-gradient-to-r from-transparent to-white/20" />
+            <div className="flex items-center gap-6">
                 <motion.div 
                     key={glitchText}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="text-xs font-mono text-red-600 font-bold tracking-[0.3em]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-[10px] font-mono text-red-600 font-bold tracking-[0.4em]"
                 >
                     {glitchText}
                 </motion.div>
-                <div className="h-[1px] w-20 bg-gradient-to-l from-transparent to-white/20" />
             </div>
 
-            <div className="flex gap-2">
-                {Array.from({length: 8}).map((_, i) => (
-                    <motion.div 
+            <div className="flex gap-1">
+                {Array.from({length: 12}).map((_, i) => (
+                    <div 
                         key={i}
-                        animate={{ opacity: [0.1, 0.5, 0.1] }}
-                        transition={{ duration: 0.8, delay: i * 0.1, repeat: Infinity }}
-                        className={`w-4 h-1 ${progress > (i + 1) * 12.5 ? 'bg-red-600 shadow-[0_0_10px_#DC2626]' : 'bg-white/10'}`}
+                        className={`w-3 h-1 transition-all duration-300 ${progress > (i / 12) * 100 ? 'bg-red-600 shadow-[0_0_8px_#DC2626]' : 'bg-white/5'}`}
                     />
                 ))}
             </div>
         </div>
       </div>
 
-      {/* Futuristic Corner Info */}
+      {/* Info labels */}
       <div className="absolute top-12 left-12 flex flex-col gap-1 opacity-20 text-[9px] font-mono tracking-widest leading-none">
-          <p>ST_CODE: HARSH_007</p>
-          <p>LOC_DATA: 23° 04' N / 72° 34' E</p>
-          <p>STAT: NOMINAL</p>
+          <p>ST_ASSETS: {assetsLoaded ? "SYNCED" : "WAITING"}</p>
+          <p>LOAD_LEVEL: {Math.round(progress)}%</p>
       </div>
-
-      <div className="absolute bottom-12 right-12 flex flex-col items-end gap-1 opacity-20 text-[9px] font-mono tracking-widest leading-none">
-          <p>OS_V8.0.0_PRODUCTION</p>
-          <p>EST_LOAD_TIME: 2.1S</p>
-          <p>ROOT: /ARCHITECTURE</p>
-      </div>
-
     </motion.div>
   );
 };
