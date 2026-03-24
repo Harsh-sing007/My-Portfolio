@@ -40,11 +40,24 @@ function App() {
         {isLoading && <Loader onComplete={() => setIsLoading(false)} />}
       </AnimatePresence>
 
+      {/* Global Aesthetics Overlay: Noise & Dynamic Grid */}
+      <div className="fixed inset-0 pointer-events-none z-[99999] opacity-20 mix-blend-overlay noise" />
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-[#050505]" />
+        <div 
+          className="absolute inset-0" 
+          style={{ 
+            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0)',
+            backgroundSize: '40px 40px'
+          }} 
+        />
+      </div>
+
       <CustomCursor />
       
       {/* Cinematic Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-red-600 origin-left z-[99999]"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-red-600 origin-left z-[99999]"
         style={{ scaleX }}
       />
 

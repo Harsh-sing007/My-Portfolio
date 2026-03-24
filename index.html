@@ -29,12 +29,13 @@
     <!-- Preconnect and Resource Hints for Smoother HTTP Handling -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     
     <!-- Critical Font Preloading -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Inter:wght@400;900&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Hero Image Preload for LCP Optimization -->
+    <link rel="preload" as="image" href="/src/assets/hero.webp" fetchpriority="high">
   </head>
   <body>
     <div id="root"></div>

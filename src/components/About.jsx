@@ -47,7 +47,9 @@ const About = () => {
             <img
               src={heroPic}
               alt="Harsh Singh"
-              className="w-full h-full object-cover rounded-[28px] border border-white/10 shadow-2xl"
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover rounded-[28px] border border-white/10 shadow-2xl transition-all duration-700 grayscale-[0.2] group-hover:grayscale-0"
             />
           </motion.div>
 
